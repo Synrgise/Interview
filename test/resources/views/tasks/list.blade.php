@@ -8,8 +8,8 @@
 
         <title>Synrgise - Innovate Learning</title>
 
-
-        <link href="C:\wamp64\www\deepu\Interview\assets\css/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+      
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/core.css" rel="stylesheet" type="text/css">
         <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="assets/css/components.css" rel="stylesheet" type="text/css">
@@ -190,103 +190,37 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+
+                            @foreach($tasks as $task)   
                                 <div class="col-sm-6 col-md-4">
                                     <div class="panel" style="cursor: pointer;">
                                         <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                            <div class="checkbox checkbox-primary ">
-                                                <input class="todo-done" id="1" type="checkbox">
-                                                <label for="1"></label>
-                                            </div>
+                                        <div class="due-date text-center pull-right">{{date('d', $task->date)}}<br>{{date('M', $task->date)}}</div>
                                         </div>
                                         <div class="panel-body">
                                             <div class="panel-inner">
                                                 <div class="panel-inner-content">
-                                                    <h3>Task 1</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                <h3>{{$task->task_name}}</h3>
+                                                    <p>{{$task->task_details}}</p>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer" style="padding: 0;text-align: right;">
+                                            <div class="icon-links quick-icon-links">
+                                                <button data-toggle="tooltip" type="button" id="" title="Edit" class="btn btn icon-btn">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                            </div>
+                                            <div class="icon-links quick-icon-links">
+                                                <button data-toggle="tooltip" type="button" id="" title="Unpublish" class="btn btn icon-btn">
+                                                    <i class="fa fa-power-off"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="panel" style="cursor: pointer;">
-                                        <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                            <div class="checkbox checkbox-primary ">
-                                                <input class="todo-done" id="2" type="checkbox">
-                                                <label for="2"></label>
-                                            </div>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="panel-inner">
-                                                <div class="panel-inner-content">
-                                                    <h3>Task 2</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="panel" style="cursor: pointer;">
-                                        <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                            <div class="checkbox checkbox-primary ">
-                                                <input class="todo-done" id="3" type="checkbox">
-                                                <label for="3"></label>
-                                            </div>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="panel-inner">
-                                                <div class="panel-inner-content">
-                                                    <h3>Task 3</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="panel" style="cursor: pointer;">
-                                        <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                            <div class="checkbox checkbox-primary ">
-                                                <input class="todo-done" id="4" type="checkbox">
-                                                <label for="4"></label>
-                                            </div>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="panel-inner">
-                                                <div class="panel-inner-content">
-                                                    <h3>Task 4</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="panel" style="cursor: pointer;">
-                                        <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                            <div class="checkbox checkbox-primary ">
-                                                <input class="todo-done" id="5" type="checkbox">
-                                                <label for="5"></label>
-                                            </div>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="panel-inner">
-                                                <div class="panel-inner-content">
-                                                    <h3>Task 5</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach      
+
                         </div>
 
                         <div id="managetasks" class="tab-pane fade">
@@ -299,16 +233,18 @@
                             </div>
                             <!-- Created Tasks -->
                             <div class="row created-tasks">
+                               
+                            @foreach($tasks as $task)   
                                 <div class="col-sm-6 col-md-4">
                                     <div class="panel" style="cursor: pointer;">
                                         <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
+                                        <div class="due-date text-center pull-right">{{date('d', $task->date)}}<br>{{date('M', $task->date)}}</div>
                                         </div>
                                         <div class="panel-body">
                                             <div class="panel-inner">
                                                 <div class="panel-inner-content">
-                                                    <h3>Task 1</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                <h3>{{$task->task_name}}</h3>
+                                                    <p>{{$task->task_details}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -326,114 +262,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="panel" style="cursor: pointer;">
-                                        <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="panel-inner">
-                                                <div class="panel-inner-content">
-                                                    <h3>Task 2</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-footer" style="padding: 0;text-align: right;">
-                                            <div class="icon-links quick-icon-links">
-                                                <button data-toggle="tooltip" type="button" id="" title="Edit" class="btn btn icon-btn">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
-                                            </div>
-                                            <div class="icon-links quick-icon-links">
-                                                <button data-toggle="tooltip" type="button" id="" title="Unpublish" class="btn btn icon-btn">
-                                                    <i class="fa fa-power-off"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="panel" style="cursor: pointer;">
-                                        <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="panel-inner">
-                                                <div class="panel-inner-content">
-                                                    <h3>Task 3</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-footer" style="padding: 0;text-align: right;">
-                                            <div class="icon-links quick-icon-links">
-                                                <button data-toggle="tooltip" type="button" id="" title="Edit" class="btn btn icon-btn">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
-                                            </div>
-                                            <div class="icon-links quick-icon-links">
-                                                <button data-toggle="tooltip" type="button" id="" title="Unpublish" class="btn btn icon-btn">
-                                                    <i class="fa fa-power-off"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="panel" style="cursor: pointer;">
-                                        <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="panel-inner">
-                                                <div class="panel-inner-content">
-                                                    <h3>Task 4</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-footer" style="padding: 0;text-align: right;">
-                                            <div class="icon-links quick-icon-links">
-                                                <button data-toggle="tooltip" type="button" id="" title="Edit" class="btn btn icon-btn">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
-                                            </div>
-                                            <div class="icon-links quick-icon-links">
-                                                <button data-toggle="tooltip" type="button" id="" title="Unpublish" class="btn btn icon-btn">
-                                                    <i class="fa fa-power-off"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="panel" style="cursor: pointer;">
-                                        <div class="panel-header">
-                                            <div class="due-date text-center pull-right">28<br>Dec</div>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="panel-inner">
-                                                <div class="panel-inner-content">
-                                                    <h3>Task 5</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-footer" style="padding: 0;text-align: right;">
-                                            <div class="icon-links quick-icon-links">
-                                                <button data-toggle="tooltip" type="button" id="" title="Edit" class="btn btn icon-btn">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
-                                            </div>
-                                            <div class="icon-links quick-icon-links">
-                                                <button data-toggle="tooltip" type="button" id="" title="Unpublish" class="btn btn icon-btn">
-                                                    <i class="fa fa-power-off"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach    
+
                             </div><!-- end Created Tasks -->
 
                             <!-- New Tasks -->
@@ -442,6 +272,8 @@
                                     <div class="panel-heading">
                                         <h4 class="panel-title"><i class="fa fa-plus"></i> New Task</h4>
                                     </div>
+                                    <form method="post" action="">
+                                     {!! Form::hidden('_token',csrf_token()) !!}
                                     <div class="panel-body">
                                         <form role="form">
                                             <div class="form-group">
@@ -468,6 +300,8 @@
                                             </div>
                                         </form>
                                     </div>
+
+                                    </form>
                                 </div>
                             </div><!-- end New Tasks -->
                         </div>

@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'TaskController@list');
+Route::get('/', 'TaskController@list');
 Route::get('/home', function () {
     return view('welcome');
 });
