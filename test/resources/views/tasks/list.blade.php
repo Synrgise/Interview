@@ -272,8 +272,9 @@
                                     <div class="panel-heading">
                                         <h4 class="panel-title"><i class="fa fa-plus"></i> New Task</h4>
                                     </div>
-                                    <form method="post" action="">
-                                     {!! Form::hidden('_token',csrf_token()) !!}
+                                  
+                                 
+                                    
                                     <div class="panel-body">
                                         <form role="form">
                                             <div class="form-group">
@@ -300,7 +301,7 @@
                                             </div>
                                         </form>
                                     </div>
-
+                               
                                     </form>
                                 </div>
                             </div><!-- end New Tasks -->

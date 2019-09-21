@@ -24,24 +24,24 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function new_task(Request $request)
+    public function addnewtask (Request $request)
     {
 
-        print_r($request);die();
+       
         $request->validate([
-            'share_name'=>'required',
-            'share_price'=> 'required|integer',
-            'share_qty' => 'required|integer'
+            'task_name'=>'required',
+            'task_details'=> 'required',
+            'task_date' => 'required'
           ]);
-          $share = new Share([
-            'share_name' => $request->get('share_name'),
-            'share_price'=> $request->get('share_price'),
-            'share_qty'=> $request->get('share_qty')
+          $task= new Task([
+            'task_name' => $request->get('task_name'),
+            'task_details'=> $request->get('task_details'),
+            'task_date'=> $request->get('task_date')
           ]);
-          $share->save();
-          return redirect('/shares')->with('success', 'Stock has been added');
+          $task->save();
+          return redirect('/list')->with('success', 'Task Added');
     }
-    
+
     public function create()
     {
        return view('shares.create');

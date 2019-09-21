@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', 'TaskController@list');
-Route::get('/', 'TaskController@list');
+Route::post('/add_task', 'TaskController@list');
 Route::get('/home', function () {
     return view('welcome');
 });
