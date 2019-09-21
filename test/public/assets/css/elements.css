@@ -1,0 +1,49 @@
+.logo img {
+    width: 100%;
+}
+.btn-black{
+	background: #000;
+	color: #fff;
+}
+.btn-black:hover{
+	background: #313131;
+	color: #fff;
+}
+.login a, .login label {
+    color: #fff;
+}
+.topbar-left .logo {
+    margin: 0;
+}
+.topbar-left .logo img {
+    max-width: 230px;
+    margin: 10px 0;
+}
+.subheader {
+    background: url(../images/poly-bg-red.jpg) no-repeat scroll bottom left #92081f;
+    background-size: cover;
+}
+.panel-header .checkbox.checkbox-primary {
+    margin: 0px 20px;
+    padding: 20px 20px 0;
+}
+.due-date {
+    padding: 8px 15px;
+    background: #2a332c;
+    color: #fff;
+    text-transform: uppercase;
+}
+.btn.icon-btn {
+    margin-top: 0;
+    padding: 5px;
+    background: none;
+    box-shadow: none;
+}
+.quick-icon-links {
+    height: 50px;
+    border-left: 1px solid #ececec;
+    width: 50px;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+}
