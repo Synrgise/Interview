@@ -139,10 +139,11 @@ return $month;
                                     <li class="text-center notifi-title">Notification</li>
                                     <li class="list-group">
                                        <!-- list item-->
-                                       <a href="javascript:void(0);" id="messageM" name="messageM" class="list-group-item">
-                                          <?php
+									   <?php
 											 if(count($tasks_messages) > 0){
 											 ?>
+                                       <a href="javascript:void(0);" id="messageM" name="messageM" class="list-group-item">
+                                          
 										  <div class="media">
                                              <div class="pull-left">
                                                 <em class="fa fa-user-plus fa-2x text-info"></em>
@@ -156,15 +157,17 @@ return $month;
                                              </div>
 											 
                                           </div>
-										  <?php
+										  
+                                       </a>
+									   <?php
 											 }
 											 ?>
-                                       </a>
                                        <!-- list item-->
-                                        <a href="javascript:void(0);" id="settingM" name="settingM" class="list-group-item">
-                                         <?php
+									   <?php
 											 if(count($tasks_settings) > 0){
 											 ?>
+                                        <a href="javascript:void(0);" id="settingM" name="settingM" class="list-group-item">
+                                         
 										 <div class="media">
                                              <div class="pull-left">
                                                 <em class="fa fa-diamond fa-2x text-primary"></em>
@@ -178,15 +181,17 @@ return $month;
                                              </div>
 											
                                           </div>
-										   <?php
+										   
+                                        </a>
+										<?php
 											 }
 											 ?>
-                                        </a>
                                         <!-- list item-->
-                                        <a href="javascript:void(0);" id="updateM" name="updateM" class="list-group-item">
-                                           <?php
+										<?php
 											 if(count($tasks_updates) > 0){
 											 ?>
+                                        <a href="javascript:void(0);" id="updateM" name="updateM" class="list-group-item">
+                                           
 										  <div class="media">
                                              <div class="pull-left">
                                                 <em class="fa fa-bell-o fa-2x text-danger"></em>
@@ -201,10 +206,11 @@ return $month;
                                              </div>
 											 
                                           </div>
-										  <?php
+										  
+                                        </a>
+										<?php
 											 }
 											 ?>
-                                        </a>
                                        <!-- last list item -->
                                         <a href="javascript:void(0);" class="list-group-item">
                                           <small>See all notifications</small>
