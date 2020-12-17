@@ -29,17 +29,17 @@ echo "You are not signed up.";
                 $body.=" <p>Your password is ".$users["password"].",thank you for email remember to keep your data safe.</p>";
 			 endforeach;
 if(mail($email,$subject,$body,$headers)) {
-	
- echo "Your  Login password has been emailed to you.";
- echo "<meta http-equiv=Refresh content=1;url=../recover_password.html>";
+echo "<script>alert('Your  Login password has been emailed to you');window.location.href='../login.html'</script>";
+
 } 
 else {	
- echo "<script>alert('Something went wrong please try again later');</script>";
- echo "<meta http-equiv=Refresh content=1;url=../recover_password.html>";
+ echo "<script>alert('Something went wrong please try again later');window.location.href='../recover_password.html'</script>";
+
 }
 }
 }elseif(!preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$email)){
-echo "Email format incorrect ";
-echo "<meta http-equiv=Refresh content=1;url=../recover_password.html>";	
+
+echo "<script>alert('Email format incorrect');window.location.href='../recover_password.html'</script>";
+	
 }
 ?>

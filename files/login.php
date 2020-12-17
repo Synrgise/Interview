@@ -12,8 +12,13 @@ if(isset($_POST["username"]) && !empty($_POST["password"])){
 		$statement->closeCursor();
 
 				if(count($user) == 0){
-					echo "username or password are incorect,Please try again";	
-					echo "<meta http-equiv=Refresh content=1;url=../login.html>";
+					//$error="username or password are incorect,Please try again";
+					//setcookie("user_error",$error,time()+3000,"/");
+					//echo "<meta http-equiv=Refresh content=1;url=../login.html>";
+					echo "<script>alert('username or password are incorect,Please try again');window.location.href='../login.html'</script>";
+                 // header('Location: '.'../login.html');
+			
+					
 				}else if(count($user) == 1){
 	
 					foreach($user as $users):

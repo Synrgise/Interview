@@ -8,8 +8,9 @@ if(isset($_COOKIE["usercookie"]) && isset($_POST["Unpublish"])){
 							$success =$statement_update->execute();
 							$statement_update->closeCursor();
 														if(count($success) == 0){
-echo "Something went wrong,Please try again";
-echo "<meta http-equiv=Refresh content=1;url=../index.php>";	
+
+ echo "<script>alert('Something went wrong please try again later');window.location.href='../index.php'</script>";
+	
 }else if(count($success) == 1){
 $newURL="../index.php";
 header('Location: '.$newURL);	

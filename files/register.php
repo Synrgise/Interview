@@ -10,8 +10,9 @@ htmlspecialchars($password);
 	echo "Your user name can only consist of letters or numbers or both";
 								echo "<meta http-equiv=Refresh content=1;url=../register.html>";
 		}elseif(!preg_match("/[a-zA-Z0-9,*]{7,20}$/",$password)){
-                      echo "password is too short";
-								echo "<meta http-equiv=Refresh content=1;url=../register.html>";			
+                      
+ echo "<script>alert('password is too short must be 7 charaters or more');window.location.href='../register.html'</script>";
+								
 				}else{
 					//connect and insert data using PDO
 					require_once('../db_connect/db_con.php');
@@ -27,8 +28,9 @@ htmlspecialchars($password);
 						 
 							
 							if(count($success) == 0){
-								echo "Something went wrong,Please try again";
-								echo "<meta http-equiv=Refresh content=1;url=../register.html>";	
+							
+ echo "<script>alert('Something went wrong please try again later');window.location.href='../register.html'</script>";
+								
 							}else if(count($success) == 1){
 								require_once('../db_connect/db_con.php');
 								 $query_user = "select * from users where AES_DECRYPT(username,'$encrypt_key')='".$username."' && AES_DECRYPT(password,'$encrypt_key')='".$password."'";

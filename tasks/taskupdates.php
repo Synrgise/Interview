@@ -11,9 +11,10 @@ if(isset($ID)){
 							$tasks = $statement->fetchAll();
 							$statement->closeCursor();
 							echo json_encode($tasks);
+							
 }else{
-	echo"something went wrong try again";
-echo "<meta http-equiv=Refresh content=1;url=../index.php>";	
+echo "<script>alert('Something went wrong,Please try again');window.location.href='../index.php'</script>";
+	
 }
 
 ?>
