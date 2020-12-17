@@ -226,8 +226,8 @@ return $month;
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:void(0)" id="profile"><i class="md md-face-unlock"></i> Profile</a></li>
-                                    <li><a href="javascript:void(0)" id="settings"><i class="md md-settings"></i> Settings</a></li>
+                                    <li onclick="profile();"><a href="javascript:void(0)" id="profile"><i class="md md-face-unlock"></i> Profile</a></li>
+                                    <li onclick="setting();"><a href="javascript:void(0)" id="setting"><i class="md md-settings"></i> Settings</a></li>
                                     <li><a href="javascript:void(0)" id="lock"><i class="md md-lock"></i> Lock screen</a></li>
                                     <li><a href="files/logout.php"><i class="md md-settings-power"></i> Logout</a></li>
                                 </ul>
@@ -267,7 +267,7 @@ return $month;
   <!-- Modal content -->
   <form method="post" action="tasks/update.php">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 	
 	<p align="center"><label>Edit task</label></p>
 	<input type="hidden" name="idM" id="idM" value="">
@@ -297,6 +297,7 @@ return $month;
 <div id="myModalprofile" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
+   <span class="close" onclick="document.getElementById('myModalprofile').style.display='none'">&times;</span>
 	<p align="center"><label>Profile</label></p>
 	<img src="assets/images/users/avatar-6.jpg" style="margin-left:40%;border-radius: 50%;"><br/><br/>
 	<label>Username:</label>
@@ -311,6 +312,7 @@ return $month;
   <!-- Modal content -->
   <form method="post" action="files/settings.php">
   <div class="modal-content">
+   <span class="close" onclick="document.getElementById('myModalsettings').style.display='none'">&times;</span>
 	<p align="center"><label>Settings</label></p>
 	<img src="assets/images/users/avatar-6.jpg" style="margin-left:40%;border-radius: 50%;"><br/><br/>
 	<label>Username:</label>
@@ -326,6 +328,7 @@ return $month;
   <!-- Modal content -->
   
   <div class="modal-content">
+  <span class="close" onclick="document.getElementById('myModalsettingsN').style.display='none'">&times;</span>
   <div class="pull-left">
       <em class="fa fa-diamond fa-2x text-primary"></em>
            </div>
@@ -337,7 +340,7 @@ return $month;
  <?php
 	endforeach;
 	?>
-	<p id="test">""</p>
+	
 </div>
 </div>
 <div id="myModalupdatesN" class="modal">
@@ -345,6 +348,7 @@ return $month;
   
  
 	<div class="modal-content">
+	<span class="close" onclick="document.getElementById('myModalupdatesN').style.display='none'">&times;</span>
 	<div class="pull-left">
      <em class="fa fa-bell-o fa-2x text-danger"></em>
      </div>
@@ -363,6 +367,7 @@ return $month;
   
   
 	<div class="modal-content">
+	<span class="close" onclick="document.getElementById('myModalmessagesN').style.display='none'">&times;</span>
 	<div class="pull-left">
       <em class="fa fa-user-plus fa-2x text-info"></em>
        </div>
@@ -723,13 +728,13 @@ return $month;
                     });
             });
    // Get the modal
-var modal = document.getElementById("myModal");
-var modalLock = document.getElementById("myModalscreenLock");
-var modalProfile = document.getElementById("myModalprofile");
-var modalsettings = document.getElementById("myModalsettings");
-var modalUpdates = document.getElementById("myModalupdatesN");
-var modalMessages = document.getElementById("myModalmessagesN");
-var modalSettingsM = document.getElementById("myModalsettingsN");
+let modal = document.getElementById("myModal");
+let modalLock = document.getElementById("myModalscreenLock");
+let modalProfile = document.getElementById("myModalprofile");
+let modalsettings = document.getElementById("myModalsettings");
+let modalUpdates = document.getElementById("myModalupdatesN");
+let modalMessages = document.getElementById("myModalmessagesN");
+let modalSettingsM = document.getElementById("myModalsettingsN");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -742,7 +747,7 @@ lock.onclick = function() {
 messageM.onclick = function() {
   modalMessages.style.display = "block";
    document.getElementById("messageM").style.display = "none";
-  fetch("updates/message.php") .then(resp => resp.text()) .then(text =>{ 
+  fetch("back_update/message.php") .then(resp => resp.text()) .then(text =>{ 
 	let chunk = text.split("\"");
 	let filtered = chunk.filter(function (el){
   return el != "";  
@@ -755,7 +760,7 @@ document.getElementById("count_badge").innerHTML = filtered;
 settingM.onclick = function() {
   modalSettingsM.style.display = "block";
    document.getElementById("settingM").style.display = "none";
-  fetch("updates/settings.php") .then(resp => resp.text()) .then(text =>{ 
+  fetch("back_update/settings.php") .then(resp => resp.text()) .then(text =>{ 
 	let chunk = text.split("\"");
 	let filtered = chunk.filter(function (el){
   return el != "";  
@@ -769,16 +774,18 @@ document.getElementById("count_badge").innerHTML = filtered;
 updateM.onclick = function() {
   modalUpdates.style.display = "block";
   document.getElementById("updateM").style.display = "none";
-  fetch("updates/update.php") .then(resp => resp.text()) .then(text =>{ 
+  fetch("back_update/update.php") .then(resp => resp.text()) .then(text =>{ 
 	let chunk = text.split("\"");
 	let filtered = chunk.filter(function (el){
   return el != "";  
 });
+console.log(filtered);
 document.getElementById("count_badge").innerHTML = filtered;
 
 });
 }
-settings.onclick = function() {
+
+function setting() {
   modalsettings.style.display = "block";
    fetch("files/profile.php") .then(resp => resp.text()) .then(text =>{ 
 	let chunk = text.split("\"");
@@ -791,7 +798,7 @@ document.getElementById("passsettings").value = filtered[0];
 });
 }
 
-profile.onclick = function() {
+ function profile() {
   modalProfile.style.display = "block";
   fetch("files/profile.php") .then(resp => resp.text()) .then(text =>{ 
 	let chunk = text.split("\"");
@@ -851,37 +858,10 @@ fetch('tasks/taskupdates.php',{
 }
 
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
 
 
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-   if (event.target == modalProfile) {
-    modalProfile.style.display = "none";
-  }
-  if (event.target == modalsettings) {
-    modalsettings.style.display = "none";
-  }
-  
-   if (event.target == modalUpdates) {
-    modalUpdates.style.display = "none";
-  }
-  
-   if (event.target == modalMessages) {
-    modalMessages.style.display = "none";
-  }
-  
-   if (event.target == modalSettingsM) {
-    modalSettingsM.style.display = "none";
-  }
-}
+
 
         </script>
 
