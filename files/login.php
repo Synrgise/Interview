@@ -1,9 +1,11 @@
 <?php
 if(isset($_POST["username"]) && !empty($_POST["password"])){
-		$username = filter_input(INPUT_POST,'username');
-		$password = filter_input(INPUT_POST,'password');
+		$username = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
+		$password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
 		htmlspecialchars($username);
 		htmlspecialchars($password);
+		strip_tags($username);
+		strip_tags($password);
 		require_once('../db_connect/db_con.php');
 		$query_user = "select * from users where AES_DECRYPT(username,'$encrypt_key')='".$username."' && AES_DECRYPT(password,'$encrypt_key')='".$password."'";
 		$statement = $conn->prepare($query_user);
@@ -12,13 +14,9 @@ if(isset($_POST["username"]) && !empty($_POST["password"])){
 		$statement->closeCursor();
 
 				if(count($user) == 0){
-					//$error="username or password are incorect,Please try again";
-					//setcookie("user_error",$error,time()+3000,"/");
-					//echo "<meta http-equiv=Refresh content=1;url=../login.html>";
+				
 					echo "<script>alert('username or password are incorect,Please try again');window.location.href='../login.html'</script>";
-                 // header('Location: '.'../login.html');
-			
-					
+                
 				}else if(count($user) == 1){
 	
 					foreach($user as $users):

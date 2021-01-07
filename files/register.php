@@ -1,10 +1,12 @@
 <?php
 if(isset($_POST["username"]) && !empty($_POST["password"])){
 //sanitize input
-$username = filter_input(INPUT_POST,'username');
-$password = filter_input(INPUT_POST,'password');
-htmlspecialchars($username);
-htmlspecialchars($password);
+$username = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
+		$password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
+		htmlspecialchars($username);
+		htmlspecialchars($password);
+		strip_tags($username);
+		strip_tags($password);
     //match username and password requirements
 	if(!preg_match("/[a-zA-Z0-9]{0,50}$/",$username)){
 	echo "Your user name can only consist of letters or numbers or both";

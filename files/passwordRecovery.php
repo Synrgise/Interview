@@ -1,13 +1,10 @@
 <?php 
 //recover password
-$username = filter_input(INPUT_POST,'username');
+$username = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
 $email = filter_input(INPUT_POST,'email',FILTER_VALIDATE_EMAIL);
 if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',$email) && isset($_POST["username"]))
 {
-htmlspecialchars($username);
-htmlspecialchars($email);
-strip_tags($username);
-strip_tags($email);
+		
 require_once('../db_connect/db_con.php');
 $query_user = "select * from users where AES_DECRYPT(username,'$encrypt_key')='".$username."'";
 $statement = $conn->prepare($query_user);
@@ -15,8 +12,8 @@ $statement->execute();
 $user = $statement->fetchAll();
 $statement->closeCursor();
 if(count($user) == 0){
-echo "You are not signed up.";
- echo "<meta http-equiv=Refresh content=1;url=../register.html>";	
+echo "<script>alert('You are not signed up');window.location.href='../register.html'</script>";
+ 
 }else{
                 $adminEmail ="svellem51@gmail.com";
                 $headers ="From: $adminEmail\n";  
