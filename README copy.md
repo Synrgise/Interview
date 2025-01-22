@@ -40,4 +40,4 @@ Start by adding a new task using the form in 'Manage Tasks' tab.
 
 ## 👋 Hey Xen
 
-_Thanks for giving me this oppurtunity. Please let me know when you are ready for the review._
+_Thanks for giving me this oppurtunity. I have done my best within a short time period to implement the required functionality. Please let me know when you are ready for the review._

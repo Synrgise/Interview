@@ -33,6 +33,12 @@
     color: #fff;
     text-transform: uppercase;
 }
+
+.due-date.overdue {
+    background: #bf192b;
+}
+
+
 .btn.icon-btn {
     margin-top: 0;
     padding: 5px;
